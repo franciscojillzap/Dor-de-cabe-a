@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+}
+
+.img {
+  /*Largura*/
+  width: 40%;
+  /*Altura*/
+  height: auto;
+}
+
+header img {
+  width: 15%;
+  height: auto;
+}
+
+.autor {text-align: right; font-style: italic; color: darkslategray;}
+
+.contato {width: 3%; height: auto;}
+
+.post {
+  width: 40%;
+  margin: 20px;
+  padding: 30px;
+
+  background-color: #E5E9F4;
+  border: 1px dotted gray;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px 3px #383737;
+}
+
+.post img {
+  width: 100%;
+  height: auto;
+  /*Cria uma borda pontilhada (DOTTED) ao redor de um elemento*/
+  border: 1px dotted;
+}
+
+.post h2, p {padding: 7px;}
+
+.post_extra h2, p {padding: 7px;}
+
+.post_extra {
+  width: 20%;
+  /*Controla o espaço EXTERNO (fora da borda) entre elementos*/
+  margin: 20px;
+  /*Controla o espaço INTERNO entre a borda e o conteúdo.*/
+  padding: 15px;
+
+  background-color: #E5E9F4;
+  border: 1px dotted gray;
+  /*Realiza o arredondamento das bordas de um elemento*/
+  border-radius: 10px;
+  /*Faz o sombreamento ao redor de um elemento*/
+  box-shadow: 3px 3px 10px 3px #383737;
+}
+
+.carta_lateral {
+  display: block; /* Transforma em bloco para aceitar margens auto */
+  margin: 15px auto; /* Centraliza horizontalmente e dá espaço no topo */
+  width: 200%; /* Faz ela ocupar quase toda a largura do aside */
+  max-width: 200px; /* Impede que ela cresça demais em monitores gigantes */
+  height: auto;
+  border-radius: 5px; /* Deixa os cantinhos arredondados como uma carta real */
+}
+
+a:link, a:visited {text-decoration: none;}
+
+nav ul {
+  /*Remove os marcadores dos itens da lista (pontos, números, imagens, etc.)*/
+  list-style-image: url(imagens/estrela.png);
+  /*Torna o conteúdo da lista mais flexível, deixando os itens lado a lado em vez de organizados em colunas*/
+  display: flex;
+  /*Move os itens, deixando-os a esquerda (flex-start), direita (flex-end) ou centralizados (center)*/
+  justify-content: center;
+  /*Gera um espaçamento automático entre os itens, de outra forma, eles ficariam grudados um no outro (melhor alternativa que MARGIN)*/
+  gap: 50px;
+  padding: 15px;
+  font-size: 1.3rem;
+}
+
+body {
+  background-image: url(imagens/academia2.jpeg);
+  /*Torna a imagem de fundo fixa*/
+  background-attachment: fixed;
+  /*Redimensiona a imagem para cobrir toda a tela*/
+  background-size: cover;
+}
+
+header, footer {
+  text-align: center;
+  background-color: #E5E9F4;
+  border: 1px dotted gray;
+  box-shadow: 3px 3px 10px 3px #383737;
+}
+
+header {
+  background-image: url(imagens/jaden_espelhado.png), url(imagens/jaden2.png);
+  background-position: left, right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-top: 30px;
+  padding-bottom: 5px;
+  margin-bottom: 50px;
+}
+
+footer {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  margin-top: 50px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main {
+  display: grid; /* Ativamos o Grid */
+  /* Definimos duas colunas: a primeira (posts) com 3/4 do espaço, a segunda (lateral) com 1/4 */
+  grid-template-columns: 3fr 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px; /* O Grid também tem gap! */
+}
+
+/* Organizamos o contêiner de posts para que eles fiquem um embaixo do outro */
+main section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* E agora o pulo do gato: removemos as porcentagens dos cards! */
+.post, .post_extra {
+  width: 70%; /* Deixamos o Grid controlar o tamanho com o max-width e o gap do main */
+}
+
+.post { margin-bottom: 25px; }
+.post_extra { margin-bottom: 15px; }
+
+/* a. Links mudando suavemente de cor */
+a {transition: color 0.5s; /* Faz a transição da cor levar 0.3 segundos */}
+
+nav ul li a:hover {
+  color: green !important; /* Muda de cor ao passar o mouse */
+  text-shadow: 1px 1px 5px rgba(255, 204, 0, 0.5);
+}
+
+/* b. Cards aumentando levemente ao passar o mouse */
+.post, .post_extra {
+  transition: transform 0.3s; /* Suaviza o aumento de tamanho*/
+}
+
+.post:hover, .post_extra:hover {
+  transform: scale(1.02); /* Aumenta o card em apenas 2% */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5); /* Intensifica a sombra para dar profundidade */
+}
+
+/* c. Destaque visual no item atual do menu */
+/* Dica: Adicione a classe "active" no link da página que você estiver no HTML */
+nav ul li a.active {
+  border-bottom: 2px solid #383737; /* Cria uma linha embaixo do link atual */
+  font-weight: bold;
+}
