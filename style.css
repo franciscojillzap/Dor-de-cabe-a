@@ -1,165 +1,148 @@
-* {
-  margin: 0;
-}
-
-.img {
-  /*Largura*/
-  width: 40%;
-  /*Altura*/
-  height: auto;
-}
-
-header img {
-  width: 15%;
-  height: auto;
-}
-
-.autor {text-align: right; font-style: italic; color: darkslategray;}
-
-.contato {width: 3%; height: auto;}
-
-.post {
-  width: 40%;
-  margin: 20px;
-  padding: 30px;
-
-  background-color: rgba(229, 233, 244, 0.75);
-  border: 1px dotted gray;
-  border-radius: 10px;
-  box-shadow: 3px 3px 10px 3px #383737;
-}
-
-.post img {
-  width: 100%;
-  height: auto;
-  /*Cria uma borda pontilhada (DOTTED) ao redor de um elemento*/
-  border: 1px dotted;
-}
-
-.post h2, p {padding: 7px;}
-
-.post_extra h2, p {padding: 7px;}
-
-.post_extra {
-  /*Controla o espaço EXTERNO (fora da borda) entre elementos*/
-  margin: 20px;
-  /*Controla o espaço INTERNO entre a borda e o conteúdo.*/
-  padding: 15px;
-
-  background-color: rgba(229, 233, 244, 0.75);
-  border: 1px dotted gray;
-  /*Realiza o arredondamento das bordas de um elemento*/
-  border-radius: 10px;
-  /*Faz o sombreamento ao redor de um elemento*/
-  box-shadow: 3px 3px 10px 3px #383737;
-}
-
-.carta_lateral {
-  display: block; /* Transforma em bloco para aceitar margens auto */
-  margin: 15px auto; /* Centraliza horizontalmente e dá espaço no topo */
-  width: 63%; /* Faz ela ocupar quase toda a largura do aside */
-  max-width: 900px; /* Impede que ela cresça demais em monitores gigantes */
-  height: auto;
-  border-radius: 5px; /* Deixa os cantinhos arredondados como uma carta real */
-}
-
-a:link, a:visited {text-decoration: none;}
-
-nav ul {
-  /*Remove os marcadores dos itens da lista (pontos, números, imagens, etc.)*/
-  list-style-image: url(imagens/estrela.png);
-  /*Torna o conteúdo da lista mais flexível, deixando os itens lado a lado em vez de organizados em colunas*/
-  display: flex;
-  /*Move os itens, deixando-os a esquerda (flex-start), direita (flex-end) ou centralizados (center)*/
-  justify-content: center;
-  /*Gera um espaçamento automático entre os itens, de outra forma, eles ficariam grudados um no outro (melhor alternativa que MARGIN)*/
-  gap: 50px;
-  padding: 15px;
-  font-size: 1.3rem;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  background-image: url(imagens/academia2.jpeg);
-  /*Torna a imagem de fundo fixa*/
-  background-attachment: fixed;
-  /*Redimensiona a imagem para cobrir toda a tela*/
-  background-size: cover;
+    background-image: url(imagens/academia2.jpeg);
+    background-attachment: fixed;
+    background-size: cover;
 }
 
-header, footer {
-  text-align: center;
-  background-color: rgba(229, 233, 244, 0.83);
-  border: 1px dotted gray;
-  box-shadow: 3px 3px 10px 3px #383737;
-}
-
+/* --- CABEÇALHO --- */
 header {
-  background-image: url(imagens/jaden_espelhado.png), url(imagens/jaden2.png);
-  background-position: left, right;
-  background-repeat: no-repeat;
-  background-size: contain;
-  padding-top: 30px;
-  padding-bottom: 5px;
-  margin-bottom: 50px;
+    text-align: center;
+    background-color: rgba(229, 233, 244, 0.83);
+    border: 1px dotted gray;
+    box-shadow: 3px 3px 10px 3px #383737;
+    padding: 30px 10px;
+    margin-bottom: 30px;
 }
 
+header img { width: 15%; height: auto; }
+
+nav ul {
+    list-style-image: url(imagens/estrela.png);
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 15px;
+    font-size: 1.2rem;
+}
+
+nav ul li a { text-decoration: none; color: black; transition: color 0.3s; }
+nav ul li a:hover { color: green; }
+
+/* --- CONTROLES --- */
+.controles-container {
+    max-width: 1200px;
+    margin: 0 auto 15px auto;
+    padding: 0 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.controles-container button {
+    padding: 8px 15px;
+    background-color: rgba(229, 233, 244, 0.9);
+    border: 1px dotted gray;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* --- GRID PRINCIPAL --- */
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Proporção 70/30 */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+    padding: 0 10px;
+    align-items: start; /* Sincroniza o topo do Post com o Aside */
+}
+
+/* --- POSTS --- */
+.post {
+    display: none;
+    background-color: rgba(229, 233, 244, 0.75);
+    border: 1px dotted gray;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px 3px #383737;
+    transition: transform 0.3s;
+}
+
+.post.ativo { display: block; }
+.post:hover { transform: scale(1.01); }
+
+/* [CORREÇÃO] Imagem ocupando todo o espaço interno */
+.img-post-cheia {
+    width: 100%;
+    height: auto;
+    border: 1px dotted gray;
+    margin: 15px 0;
+    display: block;
+}
+
+.autor { text-align: right; font-style: italic; color: darkslategray; margin-top: 10px; }
+
+/* --- ASIDE --- */
+#lateral-fixa {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post_extra {
+    background-color: rgba(229, 233, 244, 0.75);
+    border: 1px dotted gray;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px 3px #383737;
+}
+
+/* Links alinhados à esquerda com estrelas */
+.links-esquerda {
+    list-style-image: url(imagens/estrela.png);
+    margin-left: 25px;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.links-esquerda li { padding: 4px 0; }
+.links-esquerda li a { text-decoration: none; color: black; }
+.links-esquerda li a:hover { color: green; }
+
+/* --- CARTA DO DIA (FLIP) --- */
+.bloco-carta { text-align: center; }
+
+.carta-vire {
+    width: 140px; /* Tamanho proporcional ao aside */
+    height: 200px;
+    margin: 15px auto;
+    perspective: 1000px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+}
+
+.carta-vire:hover { transform: rotateY(180deg); }
+
+.carta-frente, .carta-verso {
+    position: absolute;
+    width: 100%; height: 100%;
+    backface-visibility: hidden;
+}
+
+.carta-frente { transform: rotateY(180deg); }
+.carta-frente img, .carta-verso img { width: 100%; height: 100%; border-radius: 5px; }
+
+/* --- RODAPÉ --- */
 footer {
-  padding-top: 10px;
-  padding-bottom: 5px;
-  margin-top: 50px;
+    text-align: center;
+    background-color: rgba(229, 233, 244, 0.83);
+    border: 1px dotted gray;
+    padding: 20px;
+    margin-top: 50px;
 }
 
-main {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-main {
-  display: grid; /* Ativamos o Grid */
-  /* Definimos duas colunas: a primeira (posts) com 3/4 do espaço, a segunda (lateral) com 1/4 */
-  grid-template-columns: 2fr 1fr;
-  max-width: 1200px;
-  gap: 5px; /* O Grid também tem gap! */
-}
-
-/* Organizamos o contêiner de posts para que eles fiquem um embaixo do outro */
-main section {
-  display: flex;
-  flex-direction: column;
-}
-
-/* E agora o pulo do gato: removemos as porcentagens dos cards! */
-.post, .post_extra {
-  width: 70%; /* Deixamos o Grid controlar o tamanho com o max-width e o gap do main */
-}
-
-.post { margin-bottom: 25px; }
-.post_extra { margin-bottom: 15px; }
-
-/* a. Links mudando suavemente de cor */
-a {transition: color 0.5s; /* Faz a transição da cor levar 0.3 segundos */}
-
-nav ul li a:hover {
-  color: green !important; /* Muda de cor ao passar o mouse */
-  text-shadow: 1px 1px 5px rgba(255, 204, 0, 0.5);
-}
-
-/* b. Cards aumentando levemente ao passar o mouse */
-.post, .post_extra {
-  transition: transform 0.3s; /* Suaviza o aumento de tamanho*/
-}
-
-.post:hover, .post_extra:hover {
-  transform: scale(1.02); /* Aumenta o card em apenas 2% */
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5); /* Intensifica a sombra para dar profundidade */
-}
-
-/* c. Destaque visual no item atual do menu */
-/* Dica: Adicione a classe "active" no link da página que você estiver no HTML */
-nav ul li a.active {
-  border-bottom: 2px solid #383737; /* Cria uma linha embaixo do link atual */
-  font-weight: bold;
-}
+.contato { width: 30px; margin: 0 10px; }
