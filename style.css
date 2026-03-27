@@ -23,7 +23,7 @@ header img {
   margin: 20px;
   padding: 30px;
 
-  background-color: #E5E9F4;
+  background-color: rgba(229, 233, 244, 0.75);
   border: 1px dotted gray;
   border-radius: 10px;
   box-shadow: 3px 3px 10px 3px #383737;
@@ -41,13 +41,12 @@ header img {
 .post_extra h2, p {padding: 7px;}
 
 .post_extra {
-  width: 20%;
   /*Controla o espaço EXTERNO (fora da borda) entre elementos*/
   margin: 20px;
   /*Controla o espaço INTERNO entre a borda e o conteúdo.*/
   padding: 15px;
 
-  background-color: #E5E9F4;
+  background-color: rgba(229, 233, 244, 0.75);
   border: 1px dotted gray;
   /*Realiza o arredondamento das bordas de um elemento*/
   border-radius: 10px;
@@ -58,8 +57,8 @@ header img {
 .carta_lateral {
   display: block; /* Transforma em bloco para aceitar margens auto */
   margin: 15px auto; /* Centraliza horizontalmente e dá espaço no topo */
-  width: 200%; /* Faz ela ocupar quase toda a largura do aside */
-  max-width: 200px; /* Impede que ela cresça demais em monitores gigantes */
+  width: 63%; /* Faz ela ocupar quase toda a largura do aside */
+  max-width: 900px; /* Impede que ela cresça demais em monitores gigantes */
   height: auto;
   border-radius: 5px; /* Deixa os cantinhos arredondados como uma carta real */
 }
@@ -89,7 +88,7 @@ body {
 
 header, footer {
   text-align: center;
-  background-color: #E5E9F4;
+  background-color: rgba(229, 233, 244, 0.83);
   border: 1px dotted gray;
   box-shadow: 3px 3px 10px 3px #383737;
 }
@@ -121,10 +120,9 @@ main {
 main {
   display: grid; /* Ativamos o Grid */
   /* Definimos duas colunas: a primeira (posts) com 3/4 do espaço, a segunda (lateral) com 1/4 */
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 2fr 1fr;
   max-width: 1200px;
-  margin: 0 auto;
-  gap: 30px; /* O Grid também tem gap! */
+  gap: 5px; /* O Grid também tem gap! */
 }
 
 /* Organizamos o contêiner de posts para que eles fiquem um embaixo do outro */
